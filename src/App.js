@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Welcome from './components/Welcome.js'
+import { useState } from 'react';
 
 function App() {
+  const [inputVal, setInputVal] = useState('');
+  const [name, setName] = useState('');
+  const [isSubmitted,setSubmitState] = useState(false);
+  const submitHandler = (event) => {
+    event.preventDefault()
+    setName(`${inputVal}`)
+    if (`${inputVal}` === '') {
+      setSubmitState(false);  
+    }
+    else {
+      setSubmitState(true);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 id="heading">LOGIN PAGE</h1>
+      <form>
+        <label>
+          <label htmlFor="uname">Enter Your Name: </label><input type="text" id="uname" onChange={(event) => {
+            setInputVal(event.target.value)
+          }} />
+        </label>
+        <br />
+        <br />
+        <button id="btnSubmit" onClick={submitHandler}>SUBMIT</button>
+        {isSubmitted && <Welcome name={name} />}
+        <h2>Assignment done by Sukhman Singh 12006129</h2>
+      </form>
     </div>
   );
 }

@@ -1,0 +1,12 @@
+.welcomeMessage{
+    background-color: lightseagreen;
+    color: white;
+    width: 30%;
+    height: 400px;
+    margin: 10px auto;
+    padding: 20px 0;
+}
+
+img{
+    width: 80%;
+}
